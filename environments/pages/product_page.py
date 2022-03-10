@@ -10,7 +10,9 @@ class ProductPage(BasePage):
     def should_be_add_to_basket_massage(self):
         add_to_basket_massage = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_MASSAGE)
         price = self.browser.find_element(*ProductPageLocators.PRICE)
-        massage = add_to_basket_massage.text
-        assert massage == f"Your basket total is now {price.text}", "Text in massage is not correct"
+        alert_check = self.browser.find_element(*ProductPageLocators.MASSAGE_NAME_OF_PRODUCT)
+        product_name = self.browser.find_element(*ProductPageLocators.NAME_OF_PRODUCT)
+        assert alert_check.text == f"{product_name.text} has been added to your basket.", "Text with product in massage is not correct"
+        assert add_to_basket_massage.text == f"Your basket total is now {price.text}", "Text with price in massage is not correct"
 
 
