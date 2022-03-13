@@ -12,8 +12,8 @@ class ProductPage(BasePage):
         price = self.browser.find_element(*ProductPageLocators.PRICE)
         alert_check = self.browser.find_element(*ProductPageLocators.MASSAGE_NAME_OF_PRODUCT)
         product_name = self.browser.find_element(*ProductPageLocators.NAME_OF_PRODUCT)
-        assert alert_check.text == f"{product_name.text} has been added to your basket.", "Text with product in massage is not correct"
-        assert add_to_basket_massage.text == f"Your basket total is now {price.text}", "Text with price in massage is not correct"
+        assert alert_check.text == product_name.text, "Text with product in massage is not correct"
+        assert add_to_basket_massage.text == price.text, "Text with price in massage is not correct"
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.MASSAGE_NAME_OF_PRODUCT), \

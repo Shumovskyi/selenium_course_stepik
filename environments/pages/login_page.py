@@ -24,3 +24,13 @@ class LoginPage(BasePage):
             *LoginPageLocators.REGISTRATION_PASSWORD2), "Registration password 2 form is not presented"
         assert self.is_element_present(
             *LoginPageLocators.SING_UP_BUTTON), "Sing in button is not presented"
+
+    def register_new_user(self, email, password):
+        email_for_reg = self.browser.find_element(*LoginPageLocators.REGISTRATION_EMAIL)
+        email_for_reg.send_keys(email)
+        password_for_reg1 = self.browser.find_element(*LoginPageLocators.REGISTRATION_PASSWORD1)
+        password_for_reg1.send_keys(password)
+        password_for_reg2 = self.browser.find_element(*LoginPageLocators.REGISTRATION_PASSWORD2)
+        password_for_reg2.send_keys(password)
+        register_button = self.browser.find_element(*LoginPageLocators.SING_UP_BUTTON)
+        register_button.click()
