@@ -15,4 +15,9 @@ class ProductPage(BasePage):
         assert alert_check.text == f"{product_name.text} has been added to your basket.", "Text with product in massage is not correct"
         assert add_to_basket_massage.text == f"Your basket total is now {price.text}", "Text with price in massage is not correct"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MASSAGE_NAME_OF_PRODUCT), \
+            "Success message is presented, but should not be"
 
+    def massage_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.MASSAGE_NAME_OF_PRODUCT), "Massage is not disappeared"
